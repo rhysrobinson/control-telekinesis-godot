@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Textures/Light/texture_07.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/box.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/ball.tscn" type="PackedScene" id=4]
+[ext_resource path="res://world_env.tres" type="Environment" id=5]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.764706, 0.764706, 0.764706, 1 )
+albedo_texture = ExtResource( 1 )
+uv1_triplanar = true
+
+[node name="World" type="Spatial"]
+
+[node name="Room" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0 )
+material_override = SubResource( 1 )
+use_in_baked_light = true
+use_collision = true
+invert_faces = true
+width = 50.0
+height = 10.0
+depth = 50.0
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.34202, 0, -0.939693, 0, 1, 0, 0.939693, 0, 0.34202, -2.4, 1.5, 0 )
+
+[node name="Boxes" type="Spatial" parent="."]
+
+[node name="Box" parent="Boxes" instance=ExtResource( 3 )]
+transform = Transform( 0.931564, 0, -0.363576, 0, 1, 0, 0.363576, 0, 0.931564, 4.61125, 1.29227, -8.51838 )
+
+[node name="Box2" parent="Boxes" instance=ExtResource( 3 )]
+transform = Transform( 0.931564, 0, -0.363576, 0, 1, 0, 0.363576, 0, 0.931564, 2.6364, 1.25206, -9.41435 )
+
+[node name="Box3" parent="Boxes" instance=ExtResource( 3 )]
+transform = Transform( 0.931564, 0, -0.363576, 0, 1, 0, 0.363576, 0, 0.931564, 0.664347, 1.25206, -10.1964 )
+
+[node name="Box4" parent="Boxes" instance=ExtResource( 3 )]
+transform = Transform( 0.931564, 0, -0.363576, 0, 1, 0, 0.363576, 0, 0.931564, 1.34489, 3.40881, -9.79595 )
+
+[node name="Box5" parent="Boxes" instance=ExtResource( 3 )]
+transform = Transform( 0.931564, 0, -0.363576, 0, 1, 0, 0.363576, 0, 0.931564, 3.61364, 3.40881, -8.75681 )
+
+[node name="Box6" parent="Boxes" instance=ExtResource( 3 )]
+transform = Transform( 0.931564, 0, -0.363576, 0, 1, 0, 0.363576, 0, 0.931564, 2.41273, 5.46638, -9.19828 )
+
+[node name="Balls" type="Spatial" parent="."]
+
+[node name="Ball" parent="Balls" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.40944, 1.29186, 1.33661 )
+
+[node name="Ball2" parent="Balls" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0367, 1.29186, 3.90337 )
+
+[node name="Ball3" parent="Balls" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.69211, 1.27502, 4.59748 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 5 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="WorldEnvironment"]
+transform = Transform( 1, 0, 0, 0, -0.642788, 0.766045, 0, -0.766045, -0.642788, 0, 0, 0 )
+light_energy = 2.0
+shadow_enabled = true
+shadow_color = Color( 0.6, 0.6, 0.6, 1 )
