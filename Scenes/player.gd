@@ -60,13 +60,9 @@ func _physics_process(_delta):
 	if $Pivot/Camera/RayCast.is_colliding() && !picked_up:
 		collider = $Pivot/Camera/RayCast.get_collider()
 		if collider != previous_collider && previous_collider:
-			if previous_collider.has_method("highlight"):
-				previous_collider.highlight(false)
 			previous_collider = collider
 		else:
 			previous_collider = collider
-			if collider.has_method("highlight"):
-				collider.highlight(true)
 
 
 	if Input.is_action_just_pressed("pick"):
@@ -97,3 +93,6 @@ func _physics_process(_delta):
 		if !picked_up: return
 		picked_up.let_go(-$Pivot/PickPoint.global_transform.basis.z * throw_force)
 		picked_up = null
+
+	if Input.is_action_pressed("shield"):
+		pass

@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Textures/Light/texture_07.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/box.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/ball.tscn" type="PackedScene" id=4]
 [ext_resource path="res://world_env.tres" type="Environment" id=5]
+[ext_resource path="res://Scenes/cube.tscn" type="PackedScene" id=6]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.764706, 0.764706, 0.764706, 1 )
@@ -56,6 +57,12 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0367, 1.29186, 3.90337 )
 
 [node name="Ball3" parent="Balls" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.69211, 1.27502, 4.59748 )
+
+[node name="cube" parent="." instance=ExtResource( 6 )]
+transform = Transform( 0.625379, 0, -0.780321, 0, 1, 0, 0.780321, 0, 0.625379, 0, 1.04632, 13.5081 )
+
+[node name="cube2" parent="." instance=ExtResource( 6 )]
+transform = Transform( -0.140659, 0, -0.990058, 0, 1, 0, 0.990058, 0, -0.140659, -2.16544, 1.04437, 16.3161 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 5 )
